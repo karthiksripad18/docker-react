@@ -1,0 +1,21 @@
+version: "3"
+services:
+    react-app:
+        build:
+            context: .
+            dockerfile: Dockerfile.prod
+            # here, we are passing env variable from docker-compose to dockerfile
+            args:
+                - REACT_APP_NAME=Karthik-prod
+        ports:
+            - "8080:80"
+
+        # In Production, we do not require volume
+        # volumes:
+        #     - ./src:/app/src:ro
+        # environment:
+        #     - REACT_APP_NAME=Karthik-prods
+        #     - CHOKIDAR_USEPOLLING=true
+
+        # env_file:
+        #     - ./.env

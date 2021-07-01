@@ -1,0 +1,13 @@
+FROM node:14.17.0
+
+# /app directory already exists in the container
+# If we run any command like copy, Docker will copy files into this directory
+WORKDIR /app
+
+COPY package.json .
+RUN npm install
+COPY . .
+EXPOSE 3000
+
+# CMD is a command that docker executes by default when you launch the built image
+CMD ["npm", "start"]
